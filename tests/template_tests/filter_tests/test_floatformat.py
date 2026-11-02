@@ -30,6 +30,15 @@ class FloatformatTests(SimpleTestCase):
         )
         self.assertEqual(output, "1.4 1.4")
 
+    @setup({"floatformat_empty_arg": "{{ value|floatformat:format }}"})
+    def test_empty_arg(self):
+        # An empty string argument is invalid, like any other non-numeric
+        # argument, and must not crash.
+        output = self.engine.render_to_string(
+            "floatformat_empty_arg", {"value": 1.2345, "format": ""}
+        )
+        self.assertEqual(output, "1.2345")
+
 
 class FunctionTests(SimpleTestCase):
     def test_inputs(self):

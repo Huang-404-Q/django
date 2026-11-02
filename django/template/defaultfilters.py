@@ -138,7 +138,7 @@ def floatformat(text, arg=-1):
     force_grouping = False
     use_l10n = True
     if isinstance(arg, str):
-        last_char = arg[-1]
+        last_char = arg[-1:]
         if arg[-2:] in {"gu", "ug"}:
             force_grouping = True
             use_l10n = False
